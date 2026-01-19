@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project One — Josefine Jyllnor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <a class="site-title" href="index.html">Josefine Jyllnor</a>
+
+    <div class="layout">
+      <nav>
+
+        <ul style="margin-top:14px;">
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="Re-Direction.html">Re-Direction</a></li>
+          <li><a href="Re-Figuration.html">Re-Figuration/a></li>
+          <li><a href="Re-Enactment.html">Re-Enactment</a></li>
+          <li><a href="Dalisi Napoli Oggi.html">Dalisi Napoli Oggi</a></li>
+          <li><a href="Re-Medy.html">Re-Medy</a></li>
+          <li><a href="Aqueous.html">Aqueous.html</a></li>
+          <li><a href="Re-Live.html">Re-Live</a></li>
+          <li><a href="Try Again.html">Try Again</a></li>
+          <li><a href="biography + contact.html">biography + contact</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <h1>Re-Direction</h1>
+        <p class="meta"> Dry pastels and oil pastels on paper, stop-motion animation ∞ minutes, 2025. </p>
+
+        <!-- VIDEO -->
+        <div class="video-wrap">
+          <video
+            class="project-video"
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            muted
+            autoplay
+            loop
+            playsinline
+            preload="auto"
+          ></video>
+
+        <div class="yt-controls" aria-label="Video controls">
+          <button type="button" class="yt-btn yt-play" aria-label="Pause">pause</button>
+          <button type="button" class="yt-btn yt-mute" aria-label="Unmute">sound off</button>
+        </div>
+
+        
+        <p>
+          Exhibited in “Cultural Glitch” group exhibition at Gola Gallery.
+        </p>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- VIDEO INTERACTION -->
+  <script>
+    const video = document.querySelector(".project-video");
+    const playBtn = document.querySelector(".yt-play");
+    const muteBtn = document.querySelector(".yt-mute");
+
+    function syncUI(){
+      if (!video) return;
+
+  playBtn.textContent = video.paused ? "play" : "pause";
+  playBtn.setAttribute("aria-label", video.paused ? "Play" : "Pause");
+  
+  muteBtn.textContent = video.muted ? "sound off" : "sound on";
+  muteBtn.setAttribute("aria-label", video.muted ? "Turn sound on" : "Turn sound off");
+    }
+
+    if (video) {
+      video.play().catch(() => {});
+      syncUI();
+
+      playBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        video.paused ? video.play().catch(() => {}) : video.pause();
+        syncUI();
+      });
+
+      muteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        video.play().catch(() => {});
+        syncUI();
+      });
+
+      video.addEventListener("play", syncUI);
+      video.addEventListener("pause", syncUI);
+      video.addEventListener("volumechange", syncUI);
+    }
+  </script>
+</body>
+</html>
