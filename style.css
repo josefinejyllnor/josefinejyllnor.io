@@ -168,25 +168,34 @@ p{ margin: 0 0 12px 0; }
 
 
 
-/* No video/image */
+/* prevent selection + dragging */
 img,
 video{
-  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
 
   -webkit-user-drag: none;
   user-drag: none;
-  pointer-events: auto;
-}
 
-img,
-video{
   -webkit-touch-callout: none;
 }
 
+/* stop long-press/copy on the media itself but keep overlay clickable */
+.project-video,
+img{
+  pointer-events: none;
+}
 
+/* keep overlay buttons clickable */
+.yt-controls,
+.yt-controls *{
+  pointer-events: auto;
+}
+
+/* optional: prevent selection anywhere in the video block */
 .video-frame{
   user-select: none;
+  -webkit-user-select: none;
 }
