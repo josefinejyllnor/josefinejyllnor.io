@@ -23,10 +23,20 @@
         </ul>
       </nav>
 
-      <main>
-        <h1>Project One</h1>
-
-        <p class="meta">2026 · Animation</p>
+    
+  <main>
+    <h1>Project One</h1>
+  
+    <p class="meta">2026 · Animation</p>
+  
+    <p class="soundline">
+      sound:
+      <button type="button"
+              class="sound-toggle"
+              aria-pressed="false">
+        off
+      </button>
+    </p>
 
         <!-- VIDEO -->
         <video
@@ -52,32 +62,51 @@
   </div>
 
   <!-- VIDEO INTERACTION -->
-  <script>
+<script>
   const video = document.querySelector(".project-video");
+  const btn = document.querySelector(".sound-toggle");
+
+  function setSoundUI() {
+    if (!video || !btn) return;
+    const on = !video.muted;
+    btn.textContent = on ? "on" : "off";
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+  }
 
   if (video) {
+    // Start playback (muted autoplay)
     video.play().catch(() => {});
+    setSoundUI();
 
-    // Hover = pause
+    // Hover = pause / resume
     video.addEventListener("mouseenter", () => video.pause());
+    video.addEventListener("mouseleave", () => video.play().catch(() => {}));
 
-    // Leave = play
-    video.addEventListener("mouseleave", () => {
-      video.play().catch(() => {});
-    });
-
-    // Click = unmute + toggle play
+    // Click video = unmute (first click) + toggle play/pause
     video.addEventListener("click", () => {
       if (video.muted) {
         video.muted = false;
         video.play().catch(() => {});
-      } else if (video.paused) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
+        setSoundUI();
+        return;
       }
+      if (video.paused) video.play().catch(() => {});
+      else video.pause();
     });
+
+    // Button = toggle mute on/off
+    if (btn) {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        setSoundUI();
+      });
+    }
+
+    video.addEventListener("volumechange", setSoundUI);
   }
 </script>
+
+  
 </body>
 </html>
