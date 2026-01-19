@@ -73,64 +73,69 @@ h2{
 p{ margin: 0 0 12px 0; }
 .meta{ color: var(--muted); }
 
-/* Video */
+/* Video wrapper */
 .video-wrap{
   position: relative;
-  margin: 14px 0;
+  margin: 20px 0 24px 0;
   width: 100%;
+  overflow: hidden;            /* keeps controls fully inside video */
 }
 
-.project-video{
-  width: 100%;
-  height: auto;
-  display: block;
-  outline: none;
-}
-
+/* Controls fully inside the video frame */
 .yt-controls{
   position: absolute;
-  left: 10px;
-  bottom: 10px;
-  display: flex;
-  gap: 16px;
+  left: 16px;
+  bottom: 16px;                /* pushed inward from edges */
+
+  display: inline-flex;
   align-items: center;
+  gap: 18px;
+
   background: rgba(0,0,0,0.45);
-  padding: 6px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
+
+  white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.18s ease;
 }
 
+/* Show on hover */
 .video-wrap:hover .yt-controls{
   opacity: 1;
   pointer-events: auto;
 }
 
+/* Buttons */
 .yt-btn{
   border: 0;
   background: none;
   padding: 0;
   margin: 0;
+
   color: #fff;
   cursor: pointer;
   font: 14px/1.2 "Libre Baskerville", Georgia, serif;
   text-decoration: underline;
   white-space: nowrap;
 }
+
 .yt-btn:hover{ opacity: 0.85; }
+
 .yt-btn:focus{
   outline: 2px solid rgba(255,255,255,0.6);
   outline-offset: 2px;
 }
 
-/* Touch devices */
+/* Touch devices: always visible */
 @media (hover: none){
   .yt-controls{
     opacity: 1;
     pointer-events: auto;
   }
 }
+
 
 /* Responsive */
 @media (max-width: 720px){
