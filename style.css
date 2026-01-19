@@ -8,6 +8,8 @@
 
 *{ box-sizing:border-box; }
 html, body{ height:100%; }
+html{ scroll-behavior: smooth; }
+
 body{
   margin:0;
   background:var(--bg);
@@ -31,7 +33,7 @@ a:hover{ border-bottom-color: rgba(0,0,0,.75); }
 
 .site-title{
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 400;
   margin: 0 0 12px 0;
   display: inline-block;
   border-bottom: none;
@@ -59,13 +61,19 @@ main{ padding-top: 2px; }
 
 h1{
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   margin: 0 0 16px 0;
 }
-p{ margin: 0 0 12px 0; }
+h2{
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 8px 0;
+}
 
+p{ margin: 0 0 12px 0; }
 .meta{ color: var(--muted); }
 
+/* If you later bring back a projects index page */
 .projects{
   display: grid;
   gap: 18px;
@@ -73,38 +81,85 @@ p{ margin: 0 0 12px 0; }
 }
 .project{
   display:grid;
-  grid-template-col
+  grid-template-columns: 160px 1fr;
+  gap: 16px;
+  align-items:start;
+}
+.project img{
+  width:160px;
+  height:120px;
+  object-fit: cover;
+  display:block;
+}
+.small{
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Video + YouTube-like overlay controls (hover to reveal) */
+.video-wrap{
+  position: relative;
+  margin: 14px 0;
+  width: 100%;
+}
 
 .project-video{
   width: 100%;
   height: auto;
   display: block;
-  margin: 14px 0;
-  cursor: pointer;
-}
-
-.project-video {
-  max-width: 100%;
   outline: none;
 }
 
-  .soundline{
-  margin: 0 0 8px 0;
-  font-size: 14px;
-  color: var(--muted);
+.yt-controls{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  background: rgba(0,0,0,0.45);
+  padding: 6px 8px;
+  border-radius: 6px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
 }
 
-.sound-toggle{
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: none;
-  padding: 0;
+.video-wrap:hover .yt-controls{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.yt-btn{
+  width: 34px;
+  height: 28px;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
   cursor: pointer;
-  text-decoration: underline;
-}
-.sound-toggle:focus{
-  outline: 1px dotted currentColor;
-  outline-offset: 3px;
+  font: 14px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+.yt-btn:hover{ background: rgba(255,255,255,0.22); }
+.yt-btn:focus{
+  outline: 2px solid rgba(255,255,255,0.6);
+  outline-offset: 2px;
+}
+
+/* Touch devices: no hover, so keep controls visible */
+@media (hover: none){
+  .yt-controls{
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Responsive layout */
+@media (max-width: 720px){
+  .layout{ grid-template-columns: 1fr; }
+  .project{ grid-template-columns: 1fr; }
+  .project img{ width:100%; height:auto; }
+}
