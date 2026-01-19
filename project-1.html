@@ -39,15 +39,22 @@
     </p>
 
         <!-- VIDEO -->
-    <video
-      class="project-video"
-      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-      muted
-      autoplay
-      loop
-      playsinline
-      preload="auto"
-    ></video>
+        <div class="video-wrap">
+          <video
+            class="project-video"
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            muted
+            autoplay
+            loop
+            playsinline
+            preload="auto"
+          ></video>
+        
+          <div class="yt-controls" aria-label="Video controls">
+            <button type="button" class="yt-btn yt-play" aria-label="Pause">❚❚</button>
+            <button type="button" class="yt-btn yt-mute" aria-label="Unmute">🔇</button>
+          </div>
+        </div>
     
       <div class="video-controls">
         <button type="button" class="vc-play">pause</button>
@@ -71,46 +78,45 @@
   <!-- VIDEO INTERACTION -->
 <script>
   const video = document.querySelector(".project-video");
-  const btn = document.querySelector(".sound-toggle");
+  const playBtn = document.querySelector(".yt-play");
+  const muteBtn = document.querySelector(".yt-mute");
 
-  function setSoundUI() {
-    if (!video || !btn) return;
-    const on = !video.muted;
-    btn.textContent = on ? "on" : "off";
-    btn.setAttribute("aria-pressed", on ? "true" : "false");
+  function syncUI(){
+    if (!video) return;
+
+    if (playBtn) {
+      playBtn.textContent = video.paused ? "▶" : "❚❚";
+      playBtn.setAttribute("aria-label", video.paused ? "Play" : "Pause");
+    }
+
+    if (muteBtn) {
+      muteBtn.textContent = video.muted ? "🔇" : "🔊";
+      muteBtn.setAttribute("aria-label", video.muted ? "Unmute" : "Mute");
+    }
   }
 
   if (video) {
-    // Start playback (muted autoplay)
     video.play().catch(() => {});
-    setSoundUI();
+    syncUI();
 
-    // Hover = pause / resume
-    video.addEventListener("mouseenter", () => video.pause());
-    video.addEventListener("mouseleave", () => video.play().catch(() => {}));
-
-    // Click video = unmute (first click) + toggle play/pause
-    video.addEventListener("click", () => {
-      if (video.muted) {
-        video.muted = false;
-        video.play().catch(() => {});
-        setSoundUI();
-        return;
-      }
+    playBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
       if (video.paused) video.play().catch(() => {});
       else video.pause();
+      syncUI();
     });
 
-    // Button = toggle mute on/off
-    if (btn) {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        video.muted = !video.muted;
-        setSoundUI();
-      });
-    }
+    muteBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      // If user unmutes, keep playing
+      video.play().catch(() => {});
+      syncUI();
+    });
 
-    video.addEventListener("volumechange", setSoundUI);
+    video.addEventListener("play", syncUI);
+    video.addEventListener("pause", syncUI);
+    video.addEventListener("volumechange", syncUI);
   }
 </script>
 
