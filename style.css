@@ -114,11 +114,17 @@ p{ margin: 0 0 12px 0; }
 }
 
 /* Show on hover */
+.project-video:hover + .yt-controls{
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .video-frame:hover .yt-controls,
 .video-wrap:hover .yt-controls{
   opacity: 1;
   pointer-events: auto;
 }
+
 
 /* Video buttons (Helvetica) */
 .yt-btn{
