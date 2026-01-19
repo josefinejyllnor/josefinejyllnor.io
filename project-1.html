@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project One — Josefine Jyllnor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <a class="site-title" href="index.html">Josefine Jyllnor</a>
+
+    <div class="layout">
+      <nav>
+        <ul>
+          <li><a href="index.html">bio + contact</a></li>
+        </ul>
+
+        <ul style="margin-top:14px;">
+          <li><a href="project-1.html">Project One</a></li>
+          <li><a href="project-2.html">Project Two</a></li>
+          <li><a href="project-3.html">Project Three</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <h1>Project One</h1>
+
+        <p class="meta">2026 · Animation</p>
+
+        <!-- VIDEO -->
+        <video
+          class="project-video"
+          src="project-1.mp4"
+          muted
+          autoplay
+          loop
+          playsinline
+          preload="auto"
+        ></video>
+
+        <p>
+          Short description of the project. One or two sentences describing
+          the work, its context, or intent.
+        </p>
+
+        <p>
+          Optional second paragraph with a little more detail.
+        </p>
+      </main>
+    </div>
+  </div>
+
+  <!-- VIDEO INTERACTION -->
+  <script>
+    const video = document.querySelector(".project-video");
+
+    if (video) {
+      // Ensure autoplay kicks in
+      video.play().catch(() => {});
+
+      // Hover: pause while hovering
+      video.addEventListener("mouseenter", () => {
+        video.pause();
+      });
+
+      // Leave: resume play
+      video.addEventListener("mouseleave", () => {
+        video.play().catch(() => {});
+      });
+
+      // Click / tap: toggle play (mobile friendly)
+      video.addEventListener("click", () => {
+        if (video.paused) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
