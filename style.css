@@ -82,7 +82,8 @@ p{ margin: 0 0 12px 0; }
 .video-frame{
   position: relative;
   width: 100%;
-  overflow: hidden; /* keep overlay inside video bounds */
+  overflow: hidden;
+  ine-height: 0;
 }
 
 .project-video{
