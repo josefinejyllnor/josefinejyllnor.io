@@ -199,3 +199,19 @@ img{
   user-select: none;
   -webkit-user-select: none;
 }
+
+
+
+.carousel{
+  position: relative;
+}
+
+.carousel-img{
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+.carousel-img.active{
+  display: block;
+}
