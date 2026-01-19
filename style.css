@@ -215,3 +215,29 @@ img{
 .carousel-img.active{
   display: block;
 }
+
+
+/* Carousel arrows */
+.carousel-prev,
+.carousel-next{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 26px;
+  line-height: 1;
+  padding: 6px 10px;
+
+  background: rgba(0,0,0,0.45);
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.carousel-prev{
+  left: 16px;
+}
+
+.carousel-next{
+  right: 16px;
+}
+
