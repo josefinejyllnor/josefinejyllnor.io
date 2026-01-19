@@ -73,30 +73,7 @@ h2{
 p{ margin: 0 0 12px 0; }
 .meta{ color: var(--muted); }
 
-/* If you later bring back a projects index page */
-.projects{
-  display: grid;
-  gap: 18px;
-  margin-top: 10px;
-}
-.project{
-  display:grid;
-  grid-template-columns: 160px 1fr;
-  gap: 16px;
-  align-items:start;
-}
-.project img{
-  width:160px;
-  height:120px;
-  object-fit: cover;
-  display:block;
-}
-.small{
-  font-size: 14px;
-  color: var(--muted);
-}
-
-/* Video + YouTube-like overlay controls (hover to reveal) */
+/* Video */
 .video-wrap{
   position: relative;
   margin: 14px 0;
@@ -115,13 +92,11 @@ p{ margin: 0 0 12px 0; }
   left: 10px;
   bottom: 10px;
   display: flex;
-  gap: 8px;
+  gap: 16px;
   align-items: center;
-
   background: rgba(0,0,0,0.45);
   padding: 6px 8px;
   border-radius: 6px;
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.18s ease;
@@ -133,40 +108,6 @@ p{ margin: 0 0 12px 0; }
 }
 
 .yt-btn{
-  width: 34px;
-  height: 28px;
-  border: 0;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  cursor: pointer;
-  font: 14px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-.yt-btn:hover{ background: rgba(255,255,255,0.22); }
-.yt-btn:focus{
-  outline: 2px solid rgba(255,255,255,0.6);
-  outline-offset: 2px;
-}
-
-/* Touch devices: no hover, so keep controls visible */
-@media (hover: none){
-  .yt-controls{
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-/* Responsive layout */
-@media (max-width: 720px){
-  .layout{ grid-template-columns: 1fr; }
-  .project{ grid-template-columns: 1fr; }
-  .project img{ width:100%; height:auto; }
-}
-
-
-
-.yt-btn{
   border: 0;
   background: none;
   padding: 0;
@@ -175,5 +116,23 @@ p{ margin: 0 0 12px 0; }
   cursor: pointer;
   font: 14px/1.2 "Libre Baskerville", Georgia, serif;
   text-decoration: underline;
+  white-space: nowrap;
 }
 .yt-btn:hover{ opacity: 0.85; }
+.yt-btn:focus{
+  outline: 2px solid rgba(255,255,255,0.6);
+  outline-offset: 2px;
+}
+
+/* Touch devices */
+@media (hover: none){
+  .yt-controls{
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Responsive */
+@media (max-width: 720px){
+  .layout{ grid-template-columns: 1fr; }
+}
