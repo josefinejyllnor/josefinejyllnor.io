@@ -41,8 +41,8 @@
           <img src="image5.jpeg" class="carousel-img" alt="">
       
           <div class="yt-controls">
-            <button class="yt-btn carousel-prev">prev</button>
-            <button class="yt-btn carousel-next">next</button>
+            <button class="yt-btn carousel-prev" aria-label="Previous image">‹</button>
+            <button class="yt-btn carousel-next" aria-label="Next image">›</button>
           </div>
       
         </div>
@@ -61,25 +61,52 @@
   const images = document.querySelectorAll(".carousel-img");
   const prev = document.querySelector(".carousel-prev");
   const next = document.querySelector(".carousel-next");
+  const carousel = document.querySelector(".carousel");
   
   let index = 0;
+  const AUTOPLAY_MS = 6000;
+  let timer;
   
   function show(i){
     images.forEach(img => img.classList.remove("active"));
     images[i].classList.add("active");
   }
   
+  function startAutoplay(){
+    timer = setInterval(() => {
+      index = (index + 1) % images.length;
+      show(index);
+    }, AUTOPLAY_MS);
+  }
+  
+  function resetAutoplay(){
+    clearInterval(timer);
+    startAutoplay();
+  }
+  
+  /* init */
+  show(index);
+  startAutoplay();
+  
+  /* controls */
   prev.addEventListener("click", e => {
     e.stopPropagation();
     index = (index - 1 + images.length) % images.length;
     show(index);
+    resetAutoplay();
   });
   
   next.addEventListener("click", e => {
     e.stopPropagation();
     index = (index + 1) % images.length;
     show(index);
+    resetAutoplay();
   });
+  
+  /* pause on hover */
+  carousel.addEventListener("mouseenter", () => clearInterval(timer));
+  carousel.addEventListener("mouseleave", startAutoplay);
   </script>
+
 </body>
 </html>
