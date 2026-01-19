@@ -76,7 +76,7 @@ p{ margin: 0 0 12px 0; }
 /* Video wrapper */
 .video-wrap{
   position: relative;
-  margin: 20px 0 24px 0;
+  margin: 24px 0; 
   width: 100%;
   overflow: hidden;            /* keeps controls fully inside video */
 }
