@@ -73,19 +73,30 @@ h2{
 p{ margin: 0 0 12px 0; }
 .meta{ color: var(--muted); }
 
-/* Video wrapper */
+/* ===== Video (overlay stays on video only) ===== */
+
 .video-wrap{
+  margin: 24px 0;
+}
+
+.video-frame{
   position: relative;
-  margin: 24px 0; 
   width: 100%;
-  overflow: hidden;            /* keeps controls fully inside video */
+  overflow: hidden; /* keep overlay inside video bounds */
+}
+
+.project-video{
+  width: 100%;
+  height: auto;
+  display: block;
+  outline: none;
 }
 
 /* Controls fully inside the video frame */
 .yt-controls{
   position: absolute;
   left: 16px;
-  bottom: 16px;                /* pushed inward from edges */
+  bottom: 16px;
 
   display: inline-flex;
   align-items: center;
@@ -101,13 +112,12 @@ p{ margin: 0 0 12px 0; }
   transition: opacity 0.18s ease;
 }
 
-/* Show on hover */
-.video-wrap:hover .yt-controls{
+/* Show on hover (only when hovering the video frame) */
+.video-frame:hover .yt-controls{
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Buttons */
 .yt-btn{
   border: 0;
   background: none;
@@ -135,7 +145,6 @@ p{ margin: 0 0 12px 0; }
     pointer-events: auto;
   }
 }
-
 
 /* Responsive */
 @media (max-width: 720px){
