@@ -14,7 +14,7 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family: "Libre Baskerville", Georgia, serif;
+  font-family: Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 15.5px;
   line-height: 1.55;
 }
@@ -73,7 +73,7 @@ h2{
 p{ margin: 0 0 12px 0; }
 .meta{ color: var(--muted); }
 
-/* ===== Video (overlay stays on video only) ===== */
+/* ===== Video ===== */
 
 .video-wrap{
   margin: 24px 0;
@@ -83,7 +83,7 @@ p{ margin: 0 0 12px 0; }
   position: relative;
   width: 100%;
   overflow: hidden;
-  ine-height: 0;
+  line-height: 0;
 }
 
 .project-video{
@@ -93,7 +93,7 @@ p{ margin: 0 0 12px 0; }
   outline: none;
 }
 
-/* Controls fully inside the video frame */
+/* Controls overlay */
 .yt-controls{
   position: absolute;
   left: 16px;
@@ -113,12 +113,13 @@ p{ margin: 0 0 12px 0; }
   transition: opacity 0.18s ease;
 }
 
-/* Show on hover (only when hovering the video frame) */
+/* Show on hover */
 .video-frame:hover .yt-controls{
   opacity: 1;
   pointer-events: auto;
 }
 
+/* Video buttons (Helvetica) */
 .yt-btn{
   border: 0;
   background: none;
@@ -127,7 +128,11 @@ p{ margin: 0 0 12px 0; }
 
   color: #fff;
   cursor: pointer;
-  font: 14px/1.2 "Libre Baskerville", Georgia, serif;
+  font-family: Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13.5px;
+  line-height: 1.2;
+  font-weight: 400;
+
   text-decoration: underline;
   white-space: nowrap;
 }
@@ -139,7 +144,7 @@ p{ margin: 0 0 12px 0; }
   outline-offset: 2px;
 }
 
-/* Touch devices: always visible */
+/* Touch devices */
 @media (hover: none){
   .yt-controls{
     opacity: 1;
