@@ -86,3 +86,8 @@ p{ margin: 0 0 12px 0; }
   margin: 14px 0;
   cursor: pointer;
 }
+
+.project-video {
+  max-width: 100%;
+  outline: none;
+}
