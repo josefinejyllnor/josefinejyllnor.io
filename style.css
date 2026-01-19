@@ -114,7 +114,8 @@ p{ margin: 0 0 12px 0; }
 }
 
 /* Show on hover */
-.video-frame:hover .yt-controls{
+.video-frame:hover .yt-controls,
+.video-wrap:hover .yt-controls{
   opacity: 1;
   pointer-events: auto;
 }
