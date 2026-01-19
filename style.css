@@ -163,3 +163,17 @@ p{ margin: 0 0 12px 0; }
   .project{ grid-template-columns: 1fr; }
   .project img{ width:100%; height:auto; }
 }
+
+
+
+.yt-btn{
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  cursor: pointer;
+  font: 14px/1.2 "Libre Baskerville", Georgia, serif;
+  text-decoration: underline;
+}
+.yt-btn:hover{ opacity: 0.85; }
