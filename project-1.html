@@ -53,31 +53,31 @@
 
   <!-- VIDEO INTERACTION -->
   <script>
-    const video = document.querySelector(".project-video");
+  const video = document.querySelector(".project-video");
 
-    if (video) {
-      // Ensure autoplay kicks in
+  if (video) {
+    video.play().catch(() => {});
+
+    // Hover = pause
+    video.addEventListener("mouseenter", () => video.pause());
+
+    // Leave = play
+    video.addEventListener("mouseleave", () => {
       video.play().catch(() => {});
+    });
 
-      // Hover: pause while hovering
-      video.addEventListener("mouseenter", () => {
-        video.pause();
-      });
-
-      // Leave: resume play
-      video.addEventListener("mouseleave", () => {
+    // Click = unmute + toggle play
+    video.addEventListener("click", () => {
+      if (video.muted) {
+        video.muted = false;
         video.play().catch(() => {});
-      });
-
-      // Click / tap: toggle play (mobile friendly)
-      video.addEventListener("click", () => {
-        if (video.paused) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      });
-    }
-  </script>
+      } else if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }
+</script>
 </body>
 </html>
