@@ -13,7 +13,7 @@
    <div class="layout">
       <nav>
         <ul style="margin-top:14px;">
-          <li><strong>home</strong></li>
+          <li><a href="index.html">home</a></li>
           <li><a href="re-direction.html">re-direction</a></li>
           <li><a href="re-figuration.html">re-figuration</a></li>
           <li><a href="re-enactment.html">re-enactment</a></li>
@@ -65,11 +65,11 @@
     function syncUI(){
       if (!video) return;
 
-      playBtn.textContent = video.paused ? "▶" : "❚❚";
-      playBtn.setAttribute("aria-label", video.paused ? "Play" : "Pause");
-
-      muteBtn.textContent = video.muted ? "🔇" : "🔊";
-      muteBtn.setAttribute("aria-label", video.muted ? "Unmute" : "Mute");
+  playBtn.textContent = video.paused ? "play" : "pause";
+  playBtn.setAttribute("aria-label", video.paused ? "Play" : "Pause");
+  
+  muteBtn.textContent = video.muted ? "sound off" : "sound on";
+  muteBtn.setAttribute("aria-label", video.muted ? "Turn sound on" : "Turn sound off");
     }
 
     if (video) {
