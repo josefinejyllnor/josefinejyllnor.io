@@ -205,13 +205,13 @@ img{
 
 nav a {
   color: black;
-  text-decoration: none;   /* removes underline */
+  text-decoration: none; 
   transition: color 0.2s ease;
 }
 
 nav a:hover {
-  color: magenta;          /* hover color */
-  text-decoration: none;   /* keeps underline off on hover */
+  color: magenta;     
+  text-decoration: none;  
 }
 
 
