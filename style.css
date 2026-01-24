@@ -27,9 +27,8 @@ a{
 a:hover{ border-bottom-color: rgba(0,0,0,.75); }
 
 .wrap{
-  max-width: 900px;   /* pick what feels right: 900 / 1100 / 1200 */
-  margin: 0 auto;      /* equal left & right margins */
-  padding: 0 20px;     /* breathing room on small screens */
+  max-width: var(--max);
+  padding: 28px 22px 60px;
 }
 
 .site-title{
@@ -221,17 +220,12 @@ nav a:hover {
 
 
 
-/* =========================
-   CAROUSEL CONTAINER
-   ========================= */
 .carousel{
   position: relative;
   width: 100%;
 }
 
-/* =========================
-   CAROUSEL IMAGES
-   ========================= */
+/* make sure the active image defines the carousel height */
 .carousel-img{
   width: 100%;
   height: auto;
@@ -242,58 +236,40 @@ nav a:hover {
   display: block;
 }
 
-/* =========================
-   CONTROLS OVERLAY
-   ========================= */
-.carousel .yt-controls{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  z-index: 10;
-  pointer-events: none;
-}
-
-/* =========================
-   ARROW BUTTONS
-   ========================= */
-.carousel .carousel-prev,
-.carousel .carousel-next{
+/* shared arrow styling */
+.carousel-prev,
+.carousel-next{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: auto;
-
-  width: 42px;
-  height: 42px;
+  z-index: 10;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: none;
-  border-radius: 999px;
+  width: 42px;
+  height: 42px;
 
   font-size: 26px;
   line-height: 1;
 
-  color: white;
+  color: #fff;
   background: rgba(0,0,0,0.45);
-
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  border-radius: 999px;
+  text-decoration: none;
 }
 
-/* LEFT / RIGHT POSITION */
-.carousel .carousel-prev{
-  left: 14px;
+.carousel-prev{ left: 12px; }
+.carousel-next{ right: 12px; }
+
+/* optional: nicer hover */
+.carousel-prev:hover,
+.carousel-next:hover{
+  background: rgba(0,0,0,0.65);
 }
 
-.carousel .carousel-next{
-  right: 14px;
-}
+
 
 
 
