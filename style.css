@@ -27,8 +27,9 @@ a{
 a:hover{ border-bottom-color: rgba(0,0,0,.75); }
 
 .wrap{
-  max-width: var(--max);
-  padding: 28px 22px 60px;
+  max-width: 900px;  
+  margin: 0 auto;   
+  padding: 0 20px;     
 }
 
 .site-title{
@@ -72,6 +73,18 @@ h2{
 
 p{ margin: 0 0 12px 0; }
 .meta{ color: var(--muted); }
+
+
+
+.nav-list{
+  list-style: none;     /* removes bullet points */
+  padding: 0;
+  margin-top: 14px;
+}
+
+
+
+
 
 /* ===== Video ===== */
 
@@ -219,13 +232,17 @@ nav a:hover {
 
 
 
-
+/* =========================
+   CAROUSEL CONTAINER
+   ========================= */
 .carousel{
   position: relative;
   width: 100%;
 }
 
-/* make sure the active image defines the carousel height */
+/* =========================
+   CAROUSEL IMAGES
+   ========================= */
 .carousel-img{
   width: 100%;
   height: auto;
@@ -236,49 +253,72 @@ nav a:hover {
   display: block;
 }
 
-/* shared arrow styling */
-.carousel-prev,
-.carousel-next{
+/* =========================
+   CONTROLS OVERLAY
+   ========================= */
+.carousel .yt-controls{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* =========================
+   ARROW BUTTONS
+   ========================= */
+.carousel .carousel-prev,
+.carousel .carousel-next{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  pointer-events: auto;
+
+  width: 42px;
+  height: 42px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 42px;
-  height: 42px;
+  border: none;
+  border-radius: 999px;
 
   font-size: 26px;
   line-height: 1;
 
-  color: #fff;
+  color: white;
   background: rgba(0,0,0,0.45);
-  border-radius: 999px;
-  text-decoration: none;
+
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.carousel-prev{ left: 12px; }
-.carousel-next{ right: 12px; }
-
-/* optional: nicer hover */
-.carousel-prev:hover,
-.carousel-next:hover{
-  background: rgba(0,0,0,0.65);
+/* LEFT / RIGHT POSITION */
+.carousel .carousel-prev{
+  left: 14px;
 }
 
+.carousel .carousel-next{
+  right: 14px;
+}
 
+/* =========================
+   HOVER STATE (MAGENTA)
+   ========================= */
+.carousel .carousel-prev:hover,
+.carousel .carousel-next:hover{
+  background: rgba(255, 0, 255, 0.75);
+}
 
-
-
-
-
-
-
-
-
+/* Optional: subtle press effect */
+.carousel .carousel-prev:active,
+.carousel .carousel-next:active{
+  transform: translateY(-50%) scale(0.95);
+}
 
 
 
